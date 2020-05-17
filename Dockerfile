@@ -18,7 +18,8 @@ WORKDIR /guestbook
  
 ADD *.py /guestbook/
 ADD *.proto /guestbook/
-RUN pip install grpcio grpcio-tools
+RUN pip install --upgrade pip && \
+    pip install grpcio grpcio-tools
 RUN python -m grpc_tools.protoc \
 	guestbook.proto \
 	-I. --python_out=. --grpc_python_out=.
